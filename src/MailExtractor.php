@@ -2,6 +2,8 @@
 
 namespace Aulinks\MailExtractor;
 
+use Carrooi\DocExtractor\ExtractorException as DocExtractorException;
+use Carrooi\PdfExtractor\ExtractorException as PdfExtractorException;
 use Nette\Utils\Finder;
 
 /**
@@ -89,9 +91,12 @@ class MailExtractor
 
 		$mails = [];
 		foreach ($finder as $file => $info) {
-			if (($found = $this->extractMailsFromFile($file)) !== null) {
-				$mails = array_merge($mails, $found);
-			}
+			try {
+				if (($found = $this->extractMailsFromFile($file)) !== null) {
+					$mails = array_merge($mails, $found);
+				}
+			} catch (DocExtractorException $e) {
+			} catch (PdfExtractorException $e) {}
 		}
 
 		return array_unique($mails);
