@@ -3,6 +3,7 @@
 namespace Aulinks\MailExtractor;
 
 use Carrooi\DocExtractor\DocExtractor;
+use Carrooi\DocxExtractor\DocxExtractor;
 use Carrooi\PdfExtractor\PdfExtractor;
 
 /**
@@ -19,11 +20,15 @@ class TextExtractor
 	/** @var \Carrooi\DocExtractor\DocExtractor */
 	private $docExtractor;
 
+	/** @var \Carrooi\DocxExtractor\DocxExtractor */
+	private $docxExtractor;
+
 	/** @var array */
 	private $mimes = [
 		'pdf' => 'application/pdf',
 		'txt' => 'text/plain',
 		'doc' => 'application/msword',
+		'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 	];
 
 
@@ -54,6 +59,19 @@ class TextExtractor
 
 
 	/**
+	 * @return \Carrooi\DocxExtractor\DocxExtractor
+	 */
+	private function getDocxExtractor()
+	{
+		if (!$this->docxExtractor) {
+			$this->docxExtractor = new DocxExtractor;
+		}
+
+		return $this->docxExtractor;
+	}
+
+
+	/**
 	 * @param string $file
 	 * @return string
 	 */
@@ -72,9 +90,18 @@ class TextExtractor
 		}
 
 		switch ($type) {
-			case 'application/pdf': return $this->getPdfExtractor()->extractText($file); break;
-			case 'application/msword': return $this->getDocExtractor()->extractText($file); break;
-			case 'text/plain': return file_get_contents($file); break;
+			case 'application/pdf':
+				return $this->getPdfExtractor()->extractText($file);
+				break;
+			case 'application/msword':
+				return $this->getDocExtractor()->extractText($file);
+				break;
+			case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+				return $this->getDocxExtractor()->extractText($file);
+				break;
+			case 'text/plain':
+				return file_get_contents($file);
+				break;
 		}
 
 		throw new TextExtractorException('Could not extract text from file '. $file. '.');

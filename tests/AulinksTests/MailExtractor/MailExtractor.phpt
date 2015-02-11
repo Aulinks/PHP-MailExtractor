@@ -85,6 +85,16 @@ class MailExtractorTest extends TestCase
 	}
 
 
+	public function testExtractMailsFromFile_docx()
+	{
+		$mails = $this->extractor->extractMailsFromFile(__DIR__. '/files/simple.docx');
+
+		Assert::count(2, $mails);
+		Assert::contains('test@test.com', $mails);
+		Assert::contains('lorem@ipsum.com', $mails);
+	}
+
+
 	public function testExtractMailsInDirectory()
 	{
 		$mails = $this->extractor->extractMailsInDirectory(__DIR__. '/files');
