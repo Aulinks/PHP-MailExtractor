@@ -26,5 +26,6 @@
 		"classmap": [
 			"src/exceptions.php"
 		]
-	}
+	},
+	"bin": ["bin/mail-extractor"]
 }
