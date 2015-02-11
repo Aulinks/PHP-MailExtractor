@@ -2,6 +2,7 @@
 
 namespace Aulinks\MailExtractor;
 
+use Carrooi\DocExtractor\DocExtractor;
 use Carrooi\PdfExtractor\PdfExtractor;
 
 /**
@@ -15,10 +16,14 @@ class TextExtractor
 	/** @var \Carrooi\PdfExtractor\PdfExtractor */
 	private $pdfExtractor;
 
+	/** @var \Carrooi\DocExtractor\DocExtractor */
+	private $docExtractor;
+
 	/** @var array */
 	private $mimes = [
 		'pdf' => 'application/pdf',
 		'txt' => 'text/plain',
+		'doc' => 'application/msword',
 	];
 
 
@@ -32,6 +37,19 @@ class TextExtractor
 		}
 
 		return $this->pdfExtractor;
+	}
+
+
+	/**
+	 * @return \Carrooi\DocExtractor\DocExtractor
+	 */
+	private function getDocExtractor()
+	{
+		if (!$this->docExtractor) {
+			$this->docExtractor = new DocExtractor;
+		}
+
+		return $this->docExtractor;
 	}
 
 
@@ -55,6 +73,7 @@ class TextExtractor
 
 		switch ($type) {
 			case 'application/pdf': return $this->getPdfExtractor()->extractText($file); break;
+			case 'application/msword': return $this->getDocExtractor()->extractText($file); break;
 			case 'text/plain': return file_get_contents($file); break;
 		}
 

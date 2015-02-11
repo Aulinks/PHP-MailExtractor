@@ -62,6 +62,14 @@ class TextExtractorTest extends TestCase
 		Assert::contains('test@test.com', $content);
 	}
 
+
+	public function testExtractText_doc()
+	{
+		$content = $this->extractor->extractText(__DIR__. '/files/simple.doc');
+
+		Assert::contains('tellus@arcu.co.uk', $content);
+	}
+
 }
 
 

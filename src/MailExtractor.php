@@ -16,7 +16,7 @@ class MailExtractor
 	private $textExtractor;
 
 	/** @var array */
-	private $supportedFileTypes = ['pdf', 'txt'];
+	private $supportedFileTypes = ['pdf', 'txt', 'doc'];
 
 
 	/** @var string */

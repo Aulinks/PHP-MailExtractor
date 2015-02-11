@@ -76,14 +76,24 @@ class MailExtractorTest extends TestCase
 	}
 
 
+	public function testExtractMailsFromFile_doc()
+	{
+		$mails = $this->extractor->extractMailsFromFile(__DIR__. '/files/simple.doc');
+
+		Assert::count(10, $mails);
+		Assert::contains('tellus@arcu.co.uk', $mails);
+	}
+
+
 	public function testExtractMailsInDirectory()
 	{
 		$mails = $this->extractor->extractMailsInDirectory(__DIR__. '/files');
 
-		Assert::count(3, $mails);
+		Assert::count(13, $mails);
 		Assert::contains('test@test.com', $mails);
 		Assert::contains('lorem@ipsum.com', $mails);
 		Assert::contains('ipsum@lorem.com', $mails);
+		Assert::contains('tellus@arcu.co.uk', $mails);
 	}
 
 
@@ -91,11 +101,12 @@ class MailExtractorTest extends TestCase
 	{
 		$mails = $this->extractor->extractMailsInDirectory(__DIR__. '/files', true);
 
-		Assert::count(4, $mails);
+		Assert::count(14, $mails);
 		Assert::contains('test@test.com', $mails);
 		Assert::contains('lorem@ipsum.com', $mails);
 		Assert::contains('ipsum@lorem.com', $mails);
 		Assert::contains('info@aulinks.cz', $mails);
+		Assert::contains('tellus@arcu.co.uk', $mails);
 	}
 
 }
