@@ -4,6 +4,8 @@
 
 Mail extractor.
 
+Depends on pdftotext and antiword.
+
 ## Installation
 
 ```
