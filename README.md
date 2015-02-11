@@ -1,6 +1,6 @@
 # Aulinks/MailExtractor
 
-[![Build Status](https://img.shields.io/travis/Aulinks/PHP-MailExtractor.svg?style=flat-square)](https://travis-ci.org/Aulinnks/PHP-MailExtractor)
+[![Build Status](https://img.shields.io/travis/Aulinks/PHP-MailExtractor.svg?style=flat-square)](https://travis-ci.org/Aulinks/PHP-MailExtractor)
 
 Mail extractor.
 
