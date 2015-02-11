@@ -1,0 +1,30 @@
+{
+	"name": "aulinks/mail-extractor",
+	"type": "library",
+	"description": "Mail extractor",
+	"keywords": ["aulinks", "mail", "email", "extract", "extractor"],
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "David Kudera",
+			"homepage": "http://davidkudera.com",
+			"email": "kudera.d@gmail.com"
+		}
+	],
+	"require": {
+		"carrooi/pdf-extractor": "dev-master",
+		"nette/finder": "~2.2",
+		"symfony/console": "~2.6"
+	},
+	"require-dev": {
+		"nette/tester": "~1.3.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Aulinks\\MailExtractor\\": "src/"
+		},
+		"classmap": [
+			"src/exceptions.php"
+		]
+	}
+}
