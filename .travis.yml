@@ -10,6 +10,11 @@ matrix:
   allow_failures:
     - php: hhvm
 
+addons:
+  apt_packages:
+    - poppler-utils
+    - antiword
+
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source
