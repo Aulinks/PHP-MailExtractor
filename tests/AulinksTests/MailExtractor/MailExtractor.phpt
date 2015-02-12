@@ -97,7 +97,7 @@ class MailExtractorTest extends TestCase
 
 	public function testExtractMailsInDirectory()
 	{
-		$mails = $this->extractor->extractMailsInDirectory(__DIR__. '/files');
+		$mails = $this->extractor->extractMailsFromDirectory(__DIR__. '/files');
 
 		Assert::count(13, $mails);
 		Assert::contains('test@test.com', $mails);
@@ -109,7 +109,7 @@ class MailExtractorTest extends TestCase
 
 	public function testExtractMailsInDirectory_recursive()
 	{
-		$mails = $this->extractor->extractMailsInDirectory(__DIR__. '/files', true);
+		$mails = $this->extractor->extractMailsFromDirectory(__DIR__. '/files', true);
 
 		Assert::count(14, $mails);
 		Assert::contains('test@test.com', $mails);

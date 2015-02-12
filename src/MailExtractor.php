@@ -77,7 +77,7 @@ class MailExtractor
 	 * @param bool $recursive
 	 * @return array
 	 */
-	public function extractMailsInDirectory($directory, $recursive = false)
+	public function extractMailsFromDirectory($directory, $recursive = false)
 	{
 		$mask = array_map(function($ext) { return "*.$ext"; }, $this->getSupportedFileTypes());
 

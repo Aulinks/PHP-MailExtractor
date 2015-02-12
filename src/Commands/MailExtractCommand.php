@@ -50,7 +50,7 @@ class MailExtractCommand extends Command
 			$mails = $extractor->extractMailsFromFile($path);
 		} elseif (is_dir($path)) {
 			$recursive = (bool) $input->getOption('recursive');
-			$mails = $extractor->extractMailsInDirectory($path, $recursive);
+			$mails = $extractor->extractMailsFromDirectory($path, $recursive);
 		} else {
 			throw new InvalidPathException('Could not process '. $path. ' path.');
 		}
