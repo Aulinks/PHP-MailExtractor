@@ -12,9 +12,9 @@
 		}
 	],
 	"require": {
-		"carrooi/pdf-extractor": "dev-master",
-		"carrooi/doc-extractor": "dev-master",
-		"carrooi/docx-extractor": "dev-master",
+		"carrooi/pdf-extractor": "~1.0",
+		"carrooi/doc-extractor": "~1.0",
+		"carrooi/docx-extractor": "~1.0",
 		"nette/finder": "~2.2",
 		"symfony/console": "~2.6"
 	},
